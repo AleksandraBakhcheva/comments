@@ -1,9 +1,10 @@
-
+import "./style.css";
+import Comments from "./Comments";
 
 function App() {
   return (
-    <div className="App">
-      
+    <div className="container">
+      <Comments />
     </div>
   );
 }
