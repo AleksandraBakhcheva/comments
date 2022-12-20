@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import ColourGenerator from "./ColourGenerator";
 
 export default function Comments() {
     const [input, getInput] = useState("");
-    const [message, postMessage] = useState("");
+    const [messages, postMessage] = useState([]);
+
+    // use Hook to generate unique colours for messages
+    const {colours, generateColours} = ColourGenerator();
 
     function onChange(evt) {
         checkValidation(evt.target.value);
@@ -22,12 +26,19 @@ export default function Comments() {
     const handlePost = (event) => {
         event.preventDefault();
         getInput("");
-        postMessage(input);
+        postMessage(current => [input, ...current]);
+        generateColours();
     }
 
     return (
         <>
-            <div className="result">{message + "\n"}</div>
+            <div className="result">
+                {messages.map((message, index) => {
+                    return (
+                        <p key={index} style={{color: "#" + colours[index]}}>{message}</p>
+                    );
+                })}
+            </div>
             <form onSubmit={handlePost}>
                 <label for="messages">
                     <input onChange={onChange} className="messages" type="text" id="messages" placeholder="Введите сообщение" value={input} />
