@@ -14,19 +14,19 @@ export default function Comments() {
     
     const checkValidation = (userInput) => {
         getInput(userInput);
-        if (userInput !== "") {
-            let inputReplace = userInput.replace(/viagra|XXX/gi, "***");
-            getInput(inputReplace);
-        }
-        else {
-            return 0;
-        }
     }
 
     const handlePost = (event) => {
         event.preventDefault();
+        if (input !== "") {
+            let inputReplace = input.replace(/viagra|XXX/gi, "***");
+            getInput(inputReplace);
+            postMessage(current => [inputReplace, ...current]);
+        }
+        else {
+            return 0;
+        }
         getInput("");
-        postMessage(current => [input, ...current]);
         generateColours();
     }
 

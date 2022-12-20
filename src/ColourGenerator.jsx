@@ -9,7 +9,6 @@ const ColourGenerator = () => {
     };
     
     return {colours, generateColours};
-    
 };
 
 export default ColourGenerator;
