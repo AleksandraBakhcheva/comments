@@ -1,32 +1,32 @@
 import React, { useState } from "react";
-import ColourGenerator from "./ColourGenerator";
+import useColourGenerator from "./useColourGenerator";
 
 export default function Comments() {
-    const [input, getInput] = useState("");
+    const [input, setInput] = useState("");
     const [messages, postMessage] = useState([]);
 
     // use Hook to generate unique colours for messages
-    const {colours, generateColours} = ColourGenerator();
+    const {colours, generateColours} = useColourGenerator();
 
     function onChange(evt) {
         checkValidation(evt.target.value);
     } 
     
     const checkValidation = (userInput) => {
-        getInput(userInput);
+        setInput(userInput);
     }
 
     const handlePost = (event) => {
         event.preventDefault();
         if (input !== "") {
             let inputReplace = input.replace(/viagra|XXX/gi, "***");
-            getInput(inputReplace);
+            setInput(inputReplace);
             postMessage(current => [inputReplace, ...current]);
         }
         else {
-            return 0;
+            return null;
         }
-        getInput("");
+        setInput("");
         generateColours();
     }
 

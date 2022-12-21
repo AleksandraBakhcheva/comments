@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const ColourGenerator = () => {
+const useColourGenerator = () => {
     
     const [colours, setColour] = useState([]);
     
@@ -11,4 +11,4 @@ const ColourGenerator = () => {
     return {colours, generateColours};
 };
 
-export default ColourGenerator;
+export default useColourGenerator;
