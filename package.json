@@ -1,7 +1,7 @@
 {
   "name": "comments-app",
   "version": "0.1.0",
-  "homepage": "https://aleksandrabakhcheva.github.io/Week35-comments",
+  "homepage": "https://aleksandrabakhcheva.github.io/comments",
   "private": true,
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
